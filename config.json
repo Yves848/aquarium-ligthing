@@ -1,0 +1,12 @@
+{
+  "mode": "auto",
+  "jours": {
+    "monday":    {"on": "09:00", "off": "17:00"},
+    "tuesday":   {"on": "09:00", "off": "17:00"},
+    "wednesday": {"on": "09:00", "off": "17:00"},
+    "thursday":  {"on": "09:00", "off": "17:00"},
+    "friday":    {"on": "09:00", "off": "17:00"},
+    "saturday":  {"on": "09:00", "off": "17:00"},
+    "sunday":    {"on": "09:00", "off": "17:00"}
+  }
+}
