@@ -5,10 +5,9 @@ import datetime
 import os
 
 CONFIG_PATH = "/opt/aquarium-lighting/config.json"
-ESP32_BASE_URL = "http://192.168.50.202"
+ESP32_BASE_URL = "http://192.168.50.201"
 
 last_state = None  # "on", "off"
-
 def load_config():
     with open(CONFIG_PATH, "r") as f:
         return json.load(f)
@@ -27,9 +26,9 @@ def get_current_timeslot(cfg):
     off_time = datetime.datetime.strptime(horaires["off"], "%H:%M").time()
 
     if on_time <= now < off_time:
-        return "on"
+        return "day"
     else:
-        return "off"
+        return "night"
 
 def call_endpoint(endpoint):
     try:
