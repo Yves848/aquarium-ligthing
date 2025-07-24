@@ -55,7 +55,6 @@ def get_esp_state():
 def run_loop():
     global last_state
     print("Démarrage du service d'éclairage aquarium")
-
     while True:
         try:
             config = load_config()
@@ -63,7 +62,6 @@ def run_loop():
                 print("Mode manuel actif")
                 time.sleep(30)
                 continue
-
             current_state = get_current_timeslot(config)
             esp_state = get_esp_state()
             if esp_state:
