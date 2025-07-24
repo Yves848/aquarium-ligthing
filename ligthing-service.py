@@ -7,7 +7,7 @@ import os
 CONFIG_PATH = "/opt/aquarium-lighting/config.json"
 ESP32_BASE_URL = "http://192.168.50.201"
 
-last_state = None  # "on", "off"
+last_state = None  # "day" or "night"
 def load_config():
     with open(CONFIG_PATH, "r") as f:
         return json.load(f)
@@ -66,10 +66,11 @@ def run_loop():
 
             current_state = get_current_timeslot(config)
             esp_state = get_esp_state()
-            if current_state and (current_state != last_state or current_state != esp_state):
-                print(f"→ État changé : {current_state.upper()}")
-                call_endpoint("day" if current_state == "on" else "night")
-                last_state = current_state
+            if esp_state:
+                if current_state and (current_state != last_state or current_state != esp_state):
+                    print(f"→ État changé : {current_state.upper()}")
+                    call_endpoint("day" if current_state == "on" else "night")
+                    last_state = current_state
 
         except Exception as ex:
             print(f"Erreur générale : {ex}")
