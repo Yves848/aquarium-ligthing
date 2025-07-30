@@ -2,7 +2,6 @@ import time
 import json
 import requests
 import datetime
-import os
 
 CONFIG_PATH = "/opt/aquarium-lighting/config.json"
 ESP32_BASE_URL = "http://192.168.50.201"
@@ -37,7 +36,7 @@ def call_endpoint(endpoint):
         requests.post(url, timeout=5)
     except Exception as e:
         print(f"Erreur lors de l'appel à {endpoint}: {e}")
-        
+
 def get_esp_state():
     try:
         url = f"{ESP32_BASE_URL}/data"
